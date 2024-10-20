@@ -39,6 +39,13 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
+## Navigate service
+
+Navigate to http://localhost:8080/.
+
+Alternatively you can use the http://localhost:8080/swagger-ui/index.html for documentation swagger:
+
+
 ## Copyright
 
 Released under the Apache License 2.0.
