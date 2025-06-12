@@ -14,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**") // Habilitar CORS para rutas API
-                        .allowedOrigins("http://localhost:4200") // Origen permitido
+                        .allowedOrigins("https://d3jo6hjdfzjjhe.cloudfront.net") // Origen permitido
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos permitidos
                         .allowedHeaders("*") // Permitir todos los headers
                         .allowCredentials(true); // Permitir credenciales si es necesario
