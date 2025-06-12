@@ -21,13 +21,7 @@ phases:
       - echo "Subiendo $ARTIFACT_FILE a S3"
       - aws s3 cp build/$ARTIFACT_FILE s3://$APP_BUCKET/$ARTIFACT_FILE
       - echo "Desplegando a EC2 vía SSM"
-      - aws ssm send-command \
-          --document-name "AWS-RunShellScript" \
-          --comment "Despliegue automático desde CodePipeline" \
-          --targets "Key=instanceIds,Values=$APP_INSTANCE_ID" \
-          --parameters 'commands=["pkill -f app.jar || true", "cd /opt/app", "aws s3 cp s3://'$APP_BUCKET'/'$ARTIFACT_FILE' app.jar", "nohup java -jar app.jar --server.port=80 > app.log 2>&1 &"]' \
-          --region $AWS_DEFAULT_REGION \
-          --output text
+      - aws ssm send-command --document-name "AWS-RunShellScript" --comment "Despliegue automático desde CodePipeline" --targets "Key=instanceIds,Values=$APP_INSTANCE_ID" --parameters 'commands=["pkill -f app.jar || true", "cd /opt/app", "aws s3 cp s3://'$APP_BUCKET'/'$ARTIFACT_FILE' app.jar", "nohup java -jar app.jar --server.port=80 > app.log 2>&1 &"]' --region $AWS_DEFAULT_REGION --output text
 
 artifacts:
   files:
