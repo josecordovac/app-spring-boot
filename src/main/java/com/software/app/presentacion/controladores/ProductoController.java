@@ -3,6 +3,7 @@ package com.software.app.presentacion.controladores;
 import com.software.app.dominio.entidades.jpa.Producto;
 import com.software.app.aplicacion.servicios.ProductoService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,8 @@ public class ProductoController {
 
     @GetMapping
     @Operation(summary = "Listar productos", description = "Obtiene todos los productos")
-    public List<Producto> listarProductos() {
+    public List<Producto> listarProductos(HttpServletRequest request) {
+        System.out.println("Path recibido: " + request.getRequestURI());
         return productoService.listarProductos();
     }
 
